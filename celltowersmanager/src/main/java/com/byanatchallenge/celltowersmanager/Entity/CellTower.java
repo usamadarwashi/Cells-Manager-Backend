@@ -1,4 +1,4 @@
-package com.byanatchallenge.celltowersmanager.model;
+package com.byanatchallenge.celltowersmanager.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

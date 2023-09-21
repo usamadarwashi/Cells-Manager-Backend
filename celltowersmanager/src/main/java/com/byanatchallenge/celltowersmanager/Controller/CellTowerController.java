@@ -1,6 +1,6 @@
-package com.byanatchallenge.celltowersmanager;
+package com.byanatchallenge.celltowersmanager.Controller;
 
-import com.byanatchallenge.celltowersmanager.model.CellTower;
+import com.byanatchallenge.celltowersmanager.Entity.CellTower;
 import com.byanatchallenge.celltowersmanager.service.CellTowerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,12 +11,12 @@ import java.util.List;
 @RestController
 //This annotation specifies the base URL path ("/cellTower") for all the HTTP endpoints defined in this class. In other words, any HTTP request that starts with "/cellTower" will be handled by this controller.
 @RequestMapping("/cellTower")
-public class CellTowerResource {
+public class CellTowerController {
     //final: once the variable is assigned a value, it cannot be changed.
     //This declares a variable named cellTowerService of type CellTowerService. This variable will hold an instance of the CellTowerService class.
     private final CellTowerService cellTowerService;
     //Assigning the cellTowerService parameter to the cellTowerService field within the class in the constructor is a fundamental step in initializing an object properly.
-    public CellTowerResource(CellTowerService cellTowerService) {
+    public CellTowerController(CellTowerService cellTowerService) {
         this.cellTowerService = cellTowerService;
     }
 
@@ -51,8 +51,6 @@ public class CellTowerResource {
            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
        }
     }
-
-
     @PutMapping("/update")
     public ResponseEntity<CellTower> updateCellTower(@RequestBody CellTower cellTower){
         CellTower updateCellTower = cellTowerService.updateCellTower(cellTower);
@@ -60,9 +58,8 @@ public class CellTowerResource {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteCellTower(@PathVariable("id") Long id){
-        cellTowerService.deleteCellTower(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<String> deleteCellTowerById(@PathVariable Long id){
+        return new ResponseEntity<>(cellTowerService.deleteCellTower(id),HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}/isItThere")

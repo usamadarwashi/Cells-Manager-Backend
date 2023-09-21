@@ -1,11 +1,10 @@
 package com.byanatchallenge.celltowersmanager.service;
 
-import com.byanatchallenge.celltowersmanager.model.CellTower;
+import com.byanatchallenge.celltowersmanager.Entity.CellTower;
 import com.byanatchallenge.celltowersmanager.repo.CellTowerRepo;
+import jakarta.transaction.Transactional;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,9 +35,10 @@ public class CellTowerService {
     public CellTower findCellTowerById(Long id) {
         return cellTowerRepo.findCellTowerById(id);
     }
-
-    public void deleteCellTower(Long id) {
+    @Transactional
+    public String deleteCellTower(Long id) {
         cellTowerRepo.deleteCellTowerById(id);
+        return ("Cell Tower by id " + id +" is deleted");
     }
 
 
