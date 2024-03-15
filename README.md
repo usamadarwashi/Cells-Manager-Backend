@@ -1,4 +1,4 @@
-# Cell Towers MAnager
+# Cell Towers Manager
 Full-Application using Angular and Spring boot.
 
 ## Overview
