@@ -1,4 +1,4 @@
-# FullStackChallenge
+# Cell Towers MAnager
 Full-Application using Angular and Spring boot.
 
 ## Overview
